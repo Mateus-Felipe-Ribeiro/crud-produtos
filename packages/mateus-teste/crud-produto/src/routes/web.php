@@ -17,5 +17,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::resource('products', ProductsController::class);
-Route::resource('categories', CategoryController::class);
+//Route::resource('categories', CategoryController::class);
+Route::controller(CategoryController::class)->group(function (){
+    Route::get('/categories', [UserController::class, 'index']);
+    Route::get('/categories/create', [UserController::class, 'create']);
+    Route::get('/categories/{id}/edit', [UserController::class, 'edit']);
+    Route::post('/categories/store', [UserController::class, 'store']);
+    Route::put('/categories/{id}', [UserController::class, 'update']);
+    Route::delete('/categories/{id}', [UserController::class, 'destroy']);
+});
 

@@ -8,25 +8,31 @@ class CrudAdminlteServiceProvider extends ServiceProvider
 {
     public function boot()
     {
+        if (file_exists($routes = $this->getRoutesPath())) {
+            $this->loadRoutesFrom($routes);
+        }
         // Publica migrations
-        $this->publishes([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
-        ], 'crud-adminlte-migrations');
-
-        // Publica views
-        $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/crud-adminlte'),
-        ], 'crud-adminlte-views');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         // Carrega rotas
-        $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
 
         // Carrega views
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'crud-adminlte');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'CrudCP');
+
+        $this->publishes([
+            __DIR__.'/resources/views' => resource_path('views/crm/categories'),
+            __DIR__.'/resources/views' => resource_path('views/crm/products'),
+        ]);
     }
 
     public function register()
     {
         // Registra comandos se necessário
+    }
+
+    protected function getRoutesPath()
+    {
+        return __DIR__.'/routes/web.php';
     }
 }

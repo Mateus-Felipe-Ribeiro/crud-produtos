@@ -35,7 +35,7 @@
             </tbody>
         </table>
         <div class="mt-3">
-            {{ $products->links() }} <!-- Paginação -->
+            {{ $categories->links() }} <!-- Paginação -->
         </div>
     </div>
 </div>

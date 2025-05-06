@@ -15,8 +15,13 @@
         "jeroennoten/laravel-adminlte": "^3.0"
     },
     "autoload": {
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ],
         "psr-4": {
-            "MateusTeste\\CrudAdminlte\\": "src/"
+            "MateusTeste\\CrudAdminlte\\": "packages/mateus-teste/crud-produto/src",
+            "App\\": "app/"
         }
     },
     "extra": {

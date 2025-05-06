@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MateusTeste\CrudAdminlte\Controllers;
+
+use App\Http\Controllers\Controller;
 
 use MateusTeste\CrudAdminlte\Models\Category;
 use Illuminate\Http\Request;
@@ -10,12 +12,12 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::paginate(10);
-        return view('admin.categories.index', compact('categories'));
+        return view('CrudCP::categories.index', compact('categories'));
     }
 
     public function create()
     {
-        return view('admin.categories.create');
+        return view('CrudCP::categories.create');
     }
 
     public function store(Request $request)
@@ -27,7 +29,7 @@ class CategoryController extends Controller
 
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', compact('category'));
+        return view('CrudCP::categories.edit', compact('category'));
     }
 
     public function update(Request $request, Category $category)
@@ -39,6 +41,7 @@ class CategoryController extends Controller
 
     public function destroy(Category $category)
     {
+        dd($category);
         $category->delete();
         return redirect()->route('categories.index')->with('success', 'Categoria excluída!');
     }

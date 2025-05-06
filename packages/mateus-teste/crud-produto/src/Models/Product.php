@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace MateusTeste\CrudAdminlte\Models;
 
-use App\Models\Category;
+use MateusTeste\CrudAdminlte\Models\Category;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Model;

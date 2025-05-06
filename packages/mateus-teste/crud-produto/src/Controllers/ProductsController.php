@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace MateusTeste\CrudAdminlte\Controllers;
+
+use App\Http\Controllers\Controller;
 
 use MateusTeste\CrudAdminlte\Models\Product;
 use MateusTeste\CrudAdminlte\Models\Category;
@@ -11,12 +13,12 @@ class ProductsController extends Controller
 {
     public function index() {
         $products = Product::paginate(10); // Paginação
-        return view('admin.products.index', compact('products'));
+        return view('CrudCP::products.index', compact('products'));
     }
 
     public function create() {
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        return view('CrudCP::products.create', compact('categories'));
     }
 
     public function store(Request $request) {
@@ -33,7 +35,7 @@ class ProductsController extends Controller
 
     public function edit(Product $product) {
         $categories = Category::all();
-        return view('admin.products.edit', compact('product','categories'));
+        return view('CrudCP::products.edit', compact('product','categories'));
     }
 
     public function update(Request $request, Product $product) {
