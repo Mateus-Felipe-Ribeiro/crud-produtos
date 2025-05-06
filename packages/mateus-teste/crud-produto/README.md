@@ -19,15 +19,16 @@ Lembrar de adicionar a barra lateral do menu do AdminLTE:
 
 ### 1 - Configurar no Projeto Principal:
 
+composer.json:
 ```
 "repositories": [
     {
         "type": "path",
-        "url": "./packages/mateus-teste/crud-adminlte"
+        "url": "./packages/mateus-teste/crud-produto"
     }
 ],
 "require": {
-    "mateus-teste/crud-adminlte": "@dev"
+    "mateus-teste/crud-produto": "@dev"
 }
 ```
 

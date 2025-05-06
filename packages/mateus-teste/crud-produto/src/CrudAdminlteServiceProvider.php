@@ -11,8 +11,14 @@ class CrudAdminlteServiceProvider extends ServiceProvider
         if (file_exists($routes = $this->getRoutesPath())) {
             $this->loadRoutesFrom($routes);
         }
+
         // Publica migrations
-        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+         $this->publishes([
+            __DIR__.'/database/migrations' => database_path('migrations'),
+        ], 'crud-produto-migrations');
+
+        // Carrega migrations
+        //$this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
         // Carrega rotas
         $this->loadRoutesFrom(__DIR__.'/routes/web.php');
